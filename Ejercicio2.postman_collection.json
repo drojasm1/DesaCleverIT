@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "67d0200a-deac-49fd-8dda-731b9bcffbc2",
+		"name": "Ejercicio 2 (QAA-02) API",
+		"description": "Solución CreverIT\n\nDaniel Rojas Mesias",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users 10 users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(\"Users\")\r",
+							"//1 Valida respuesta 200 OK del Método\r",
+							"pm.test(\"Código de respuesta es 200 OK\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"\r",
+							"//2 Valida que el Header exista Content-Type  \r",
+							"pm.test(\"Content-Type esta presente en Header OK\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"//3 Valida que Content-Type contenga un valor especifico\r",
+							"pm.test(\"Header contiene un valor especifico en Content-Type OK\", () => {\r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');\r",
+							"});\r",
+							"//4 Valida que en header este presente llave Date (Fecha)\r",
+							"    pm.test(\"En Header Fecha esta presente OK\", function () {\r",
+							"    pm.response.to.have.header(\"Date\");\r",
+							"});\r",
+							"\r",
+							"//5 Valida que response no contenga cookies \r",
+							"pm.test(\"NO existen cookies en response OK\", () => {\r",
+							"  pm.expect(pm.cookies.has('JSESSIONID')).to.be.false;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"//6 Valida todos los Tag del response existan     \r",
+							"    });\r",
+							"    pm.test(\"Valida que tags existan en el response \", () => {    \r",
+							"    pm.expect(pm.response.text()).to.include(\"id\"); \r",
+							"    pm.expect(pm.response.text()).to.include(\"name\");    \r",
+							"    pm.expect(pm.response.text()).to.include(\"username\");    \r",
+							"    pm.expect(pm.response.text()).to.include(\"email\");    \r",
+							"    pm.expect(pm.response.text()).to.include(\"address\");    \r",
+							"    pm.expect(pm.response.text()).to.include(\"street\");   \r",
+							"    pm.expect(pm.response.text()).to.include(\"suite\");    \r",
+							"    pm.expect(pm.response.text()).to.include(\"city\");    \r",
+							"    pm.expect(pm.response.text()).to.include(\"zipcode\");   \r",
+							"    pm.expect(pm.response.text()).to.include(\"geo\");    \r",
+							"    pm.expect(pm.response.text()).to.include(\"lat\");   \r",
+							"    pm.expect(pm.response.text()).to.include(\"lng\");    \r",
+							"    pm.expect(pm.response.text()).to.include(\"phone\");   \r",
+							"    pm.expect(pm.response.text()).to.include(\"website\"); \r",
+							"    pm.expect(pm.response.text()).to.include(\"company\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"name\");  \r",
+							"    pm.expect(pm.response.text()).to.include(\"catchPhrase\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"bs\");  \r",
+							"    })\r",
+							"\r",
+							"//7 Valida tiempo de respuesta menor 400 Ms\r",
+							"pm.test(\"Response menor a 0,4 segundos OK\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"URL\",\"https://jsonplaceholder.typicode.com\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/Users/?id={{Input}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"Users",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{Input}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Albums 100 albums",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(\"Albums\")\r",
+							"//1 Valida respuesta 200 OK del Método\r",
+							"pm.test(\"Código de respuesta es 200 OK\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"\r",
+							"//2 Valida que el Header exista Content-Type  \r",
+							"pm.test(\"Content-Type esta presente en Header OK\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"//3 Valida que Content-Type contenga un valor especifico\r",
+							"pm.test(\"Header contiene un valor especifico en Content-Type OK\", () => {\r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');\r",
+							"});\r",
+							"//4 Valida que en header este presente date (Fecha)\r",
+							"    pm.test(\"En Header Fecha esta presente OK\", function () {\r",
+							"    pm.response.to.have.header(\"Date\");\r",
+							"});\r",
+							"\r",
+							"//5 Valida que response no contenga cookies \r",
+							"pm.test(\"Probamos que NO existen cookies en response OK\", () => {\r",
+							"  pm.expect(pm.cookies.has('JSESSIONID')).to.be.false;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"//6 Valida que todos los tag del response existan        \r",
+							"    });\r",
+							"    pm.test(\"Consulta Tags del Response OK\", () => {    \r",
+							"    pm.expect(pm.response.text()).to.include(\"userId\"); \r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");    \r",
+							"    pm.expect(pm.response.text()).to.include(\"title\");    \r",
+							"  \r",
+							"    })\r",
+							"\r",
+							"//7 Valida tiempo de respuesta menor 400 Ms\r",
+							"pm.test(\"Response menor a 0,4 segundos OK\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/Albums/?userId={{Input}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"Albums",
+						""
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "{{Input}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Photos 5000 photos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(\"Photos\")\r",
+							"//1 Valida respuesta 200 OK del Método\r",
+							"pm.test(\"Código de respuesta es 200 OK\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"\r",
+							"//2 Valida que el Header exista Content-Type  \r",
+							"pm.test(\"Content-Type esta presente en Header OK\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"//3 Valida que Content-Type contenga un valor especifico\r",
+							"pm.test(\"Header contiene un valor especifico en Content-Type OK\", () => {\r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');\r",
+							"});\r",
+							"//4 Valida que en header este presente date (Fecha)\r",
+							"    pm.test(\"En Header Fecha esta presente OK\", function () {\r",
+							"    pm.response.to.have.header(\"Date\");\r",
+							"});\r",
+							"\r",
+							"//5 Valida que response no contenga cookies \r",
+							"pm.test(\"Probamos que NO existen cookies en response OK\", () => {\r",
+							"  pm.expect(pm.cookies.has('JSESSIONID')).to.be.false;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"//6 Valida que existan todos los tag del response     \r",
+							"    });\r",
+							"    pm.test(\"Consulta Tags del Response OK\", () => {    \r",
+							"    pm.expect(pm.response.text()).to.include(\"albumId\"); \r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");    \r",
+							"    pm.expect(pm.response.text()).to.include(\"title\");  \r",
+							"    pm.expect(pm.response.text()).to.include(\"url\");    \r",
+							"    pm.expect(pm.response.text()).to.include(\"thumbnailUrl\");   \r",
+							"  \r",
+							"    })\r",
+							"\r",
+							"//7 Valida el tiempo de respuesta menor a 400Ms\r",
+							"pm.test(\"Response menor a 0,4 segundos OK\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/Photos/?albumId={{Input}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"Photos",
+						""
+					],
+					"query": [
+						{
+							"key": "albumId",
+							"value": "{{Input}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
